@@ -1,12 +1,18 @@
 ---
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
   description?: string;
+  currentPath?: string;
 }
 
-const { title, description = "ECCS Scotland" } = Astro.props;
+const {
+  title,
+  description = "Elite Commercial Cleaning Services Scotland",
+  currentPath = Astro.url.pathname,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -16,8 +22,33 @@ const { title, description = "ECCS Scotland" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <ClientRouter />
   </head>
-  <body>
+  <body data-page={currentPath}>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="ECCS Scotland home">
+        <img src="/eccs-logo.png" alt="Elite Commercial Cleaning Services Scotland Ltd" />
+      </a>
+      <a class="contact-quick" href="tel:07581398620">
+        <span>07581 398 620</span>
+        <small>info@ecleaningservices.co.uk</small>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="/" class:list={{ active: currentPath === "/" }}>Home</a>
+        <a href="/about/" class:list={{ active: currentPath === "/about/" }}>About</a>
+        <a href="/services/" class:list={{ active: currentPath === "/services/" }}>Services</a>
+        <a href="/testimonials/" class:list={{ active: currentPath === "/testimonials/" }}>Testimonials</a>
+        <a href="/contact/" class:list={{ active: currentPath === "/contact/" }}>Contact</a>
+      </nav>
+    </header>
     <slot />
+    <footer class="site-footer">
+      <a href="/">Elite Commercial Cleaning Services</a>
+      <span>Serving Scotland with care and attention to detail.</span>
+      <a href="tel:07581398620">07581 398 620</a>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Client Testimonials | ECCS Scotland" description="Read what clients and partners say about Elite Commercial Cleaning Services Scotland.">
+  <main class="testimonials-page page-content">
+    <header class="page-hero">
+      <p class="eyebrow">A word from our clients</p>
+      <h1>Good work speaks<br /><em>for itself.</em></h1>
+    </header>
+    <section class="featured-quote">
+      <div class="quote-inner">
+        <p class="eyebrow">Fubar</p>
+        <blockquote>“Satisfaction! That’s what you’ll get when you hire ECS to take care of your business. We’ve been utilising their services for a number of years, and we’ve been nothing but satisfied. ECS have always provided excellent customer service. They are thorough and efficient, and they clean to high standards. Thank you, Jenna, for the wonderful job you do.”</blockquote>
+        <p class="attribution">Danielle McRorie-Smith <span>Fubar</span></p>
+      </div>
+    </section>
+    <section class="partner-quote section-wrap">
+      <div class="partner-mark">NHBC<br /><span>Pride in the Job</span></div>
+      <div>
+        <p class="eyebrow">A site team partner</p>
+        <blockquote>“Bellway Homes Ltd – Scotland East acknowledges with grateful thanks the invaluable support provided by Elite Commercial Cleaning, who worked as a member of the site team under the supervision of the Pride in the Job Quality Award-winning manager Peter Lawrie at Earl’s Way, Glenrothes.”</blockquote>
+        <p class="attribution">Bellway Homes Ltd <span>Scotland East</span></p>
+      </div>
+    </section>
+    <section class="review-cta">
+      <p class="eyebrow">Your space could be next</p>
+      <h2>Let’s make a good<br /><em>first impression.</em></h2>
+      <a class="button" href="/contact/">Request a consultation <span aria-hidden="true">›</span></a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-content { padding-top: 9.5rem; }
+  .page-hero { padding: 5rem max(1.5rem, calc((100% - var(--max-width)) / 2)); background: #e9e5dc; }
+  .page-hero h1 { margin: 0; font: 400 clamp(3rem, 6vw, 5rem)/1.05 var(--font-display); }
+  .page-hero h1 em, .review-cta h2 em { color: var(--color-accent); font-weight: 400; }
+  .featured-quote { padding: 7rem 1.5rem; color: white; background: #32342f; text-align: center; }
+  .quote-inner { max-width: 58rem; margin: auto; }
+  .featured-quote blockquote, .partner-quote blockquote { margin: 0; font: 400 clamp(1.7rem, 3vw, 2.7rem)/1.35 var(--font-display); }
+  .attribution { margin: 2rem 0 0; font-size: .85rem; font-weight: 700; }
+  .attribution span { display: block; color: #bbb9b0; font-weight: 400; }
+  .partner-quote { display: grid; grid-template-columns: .6fr 1.4fr; gap: 4rem; align-items: center; padding-block: 7rem; }
+  .partner-mark { padding: 2rem; border: 1px solid #c8c4ba; color: #62645e; font: 700 2.5rem/1 var(--font-display); text-align: center; }
+  .partner-mark span { font: 600 .68rem var(--font-body); text-transform: uppercase; }
+  .partner-quote blockquote { font-size: clamp(1.4rem, 2.3vw, 2rem); }
+  .partner-quote .attribution span { color: var(--color-muted); }
+  .review-cta { padding: 6rem 1.5rem; background: #e9e5dc; text-align: center; }
+  .review-cta h2 { margin: 0 0 1.7rem; font: 400 clamp(2.6rem, 4vw, 4rem)/1.08 var(--font-display); }
+  .button { display: inline-flex; min-height: 3.75rem; align-items: center; justify-content: space-between; gap: 2rem; padding: 0 1.5rem; background: var(--color-ink); color: white; font: 700 .75rem var(--font-body); text-transform: uppercase; }
+  .button:hover { background: var(--color-accent); color: var(--color-ink); }
+  @media (max-width: 620px) { .page-content { padding-top: 11rem; } .featured-quote { padding-block: 4rem; } .partner-quote { grid-template-columns: 1fr; gap: 2rem; padding-block: 4rem; } .partner-mark { max-width: 14rem; } }
+</style>

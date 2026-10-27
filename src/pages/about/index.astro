@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const clients = ["Bellway", "Springfield", "Allanwater Homes", "Pacitti Jones", "SSR", "Harper Stone", "Halliday Homes", "Howdens", "Lochay Homes"];
+---
+
+<BaseLayout title="About ECCS Scotland | Elite Commercial Cleaning Services" description="Learn about Elite Commercial Cleaning Services Scotland, our standards and the teams we work alongside.">
+  <main class="about-page page-content">
+    <header class="page-hero">
+      <p class="eyebrow">Proudly serving Scotland</p>
+      <h1>High standards.<br /><em>Thoughtful service.</em></h1>
+    </header>
+    <section class="about-intro section-wrap">
+      <div class="section-number"><span>01</span><p>Who we are</p></div>
+      <div class="about-copy">
+        <p>Elite Commercial Cleaning Services provides high-end cleaning for homes, businesses and the people who build and care for them. We take pride in the details, bring a personal approach to every job and tailor our service to what you need.</p>
+        <p>Our experienced team is known for flexibility, reliability and consistently high standards. From a new-build handover to ongoing workplace care, we work in partnership with our clients to leave every space ready for what comes next.</p>
+        <a class="text-link" href="/services/">Explore our services <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="about-image">
+        <img src="https://eccs-scotland.co.uk/wp-content/uploads/2020/03/GBK1416.jpg" alt="A freshly cleaned, light-filled home interior" />
+        <figcaption>Care in every detail</figcaption>
+      </figure>
+    </section>
+    <section class="clients" aria-label="Some of the clients we work with">
+      <div class="section-wrap clients-inner">
+        <p class="eyebrow">Trusted by great teams</p>
+        <div class="client-list">{clients.map((client) => <span>{client}</span>)}</div>
+      </div>
+    </section>
+    <section class="recognition section-wrap">
+      <div><p class="eyebrow">Recognised for our work</p><h2>Scotland’s award-winning<br /><em>deep cleaning team.</em></h2></div>
+      <p>Elite Commercial Cleaning Services was recognised as the UK’s best deep cleaning company at the 2023 Domestic Cleaning Industry Awards. We are also SSIP Approved through the Greenlight Safety Assessment Scheme, recognising our strong health and safety management standards.</p>
+      <a class="text-link" href="/testimonials/">Read what clients say <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-content { padding-top: 9.5rem; }
+  .page-hero { padding: 5rem max(1.5rem, calc((100% - var(--max-width)) / 2)); background: #e9e5dc; }
+  .page-hero h1 { margin: 0; font: 400 clamp(3rem, 6vw, 5rem)/1.05 var(--font-display); }
+  .page-hero h1 em, h2 em { color: var(--color-accent); font-weight: 400; }
+  .section-wrap { width: min(var(--max-width), calc(100% - 3rem)); margin-inline: auto; }
+  .about-intro { display: grid; grid-template-columns: .65fr 1.2fr 1fr; gap: 3rem; align-items: start; padding-block: 6rem; }
+  .section-number { display: flex; align-items: center; gap: 1rem; color: var(--color-muted); font-size: .78rem; }
+  .section-number span { color: var(--color-accent); font-size: 1.2rem; }
+  .section-number p { margin: 0; }
+  .about-copy p { color: var(--color-muted); }
+  .text-link { display: inline-flex; gap: 1rem; align-items: center; margin-top: 1rem; padding-bottom: .35rem; border-bottom: 1px solid var(--color-accent); font-size: .82rem; font-weight: 700; }
+  .about-image { position: relative; margin: 0; }
+  .about-image img { width: 100%; height: 23rem; object-fit: cover; }
+  .about-image figcaption { position: absolute; right: 0; bottom: 0; padding: .8rem 1rem; background: var(--color-white); font-size: .75rem; }
+  .clients { padding-block: 3rem; border-block: 1px solid #e6e3db; }
+  .clients-inner > .eyebrow { text-align: center; }
+  .client-list { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; color: #77776f; font: 400 1.1rem var(--font-display); }
+  .recognition { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 1rem 4rem; padding-block: 6rem; }
+  .recognition h2 { margin: 0; font: 400 clamp(2.4rem, 4vw, 3.5rem)/1.08 var(--font-display); }
+  .recognition > p { color: var(--color-muted); }
+  .recognition .text-link { grid-column: 2; justify-self: start; margin-top: 0; }
+  @media (max-width: 800px) { .about-intro { grid-template-columns: 1fr 1fr; gap: 1.5rem; } .section-number { grid-column: 1 / -1; } .recognition { gap: 1rem 2rem; } }
+  @media (max-width: 560px) { .page-content { padding-top: 11rem; } .about-intro, .recognition { grid-template-columns: 1fr; padding-block: 4rem; } .about-image img { height: 19rem; } .client-list { justify-content: center; gap: 1rem 1.5rem; } .recognition .text-link { grid-column: auto; } }
+</style>
