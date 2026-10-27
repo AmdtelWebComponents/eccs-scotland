@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="ECCS Scotland">
+  <main>
+    <h1>ECCS Scotland</h1>
+    <p>Site re-implementation in progress.</p>
+    <eccs-counter></eccs-counter>
+  </main>
+</BaseLayout>
+
+<script>
+  // Loaded only on pages that use the component.
+  import "../components/eccs-counter";
+</script>
