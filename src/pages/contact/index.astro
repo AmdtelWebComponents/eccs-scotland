@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Contact ECCS Scotland | Request a Cleaning Consultation"
+  description="Contact Elite Commercial Cleaning Services Scotland to discuss your cleaning requirements or request a tailored consultation."
+  currentPath="/contact/"
+>
+  <main class="contact-page">
+    <section class="contact-hero">
+      <p class="eyebrow">We'd love to hear from you</p>
+      <h1>Let's talk about<br /><em>your space.</em></h1>
+    </section>
+    <section class="contact-body">
+      <div class="contact-details">
+        <p class="eyebrow">Get in touch</p>
+        <h2>How can we<br /><em>help you?</em></h2>
+        <p>Tell us a little about your property and what you need. Our team will be in touch to talk through a cleaning package that works for you.</p>
+        <a href="tel:07581398620">07581 398 620</a>
+        <a href="mailto:info@ecleaningservices.co.uk">info@ecleaningservices.co.uk</a>
+        <p class="social-label">Follow ECCS</p>
+        <a href="https://www.facebook.com/ecselitecleaning" target="_blank" rel="noreferrer">Facebook ↗</a>
+        <a href="https://www.linkedin.com/company/elite-commercial-cleaning-services-scotland-ltd/about/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/ecomcleaning" target="_blank" rel="noreferrer">Instagram ↗</a>
+      </div>
+      <form class="consult-form" name="consultation" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="consultation" />
+        <label>Name<input name="name" autocomplete="name" required /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Service required<select name="service" required><option value="" disabled selected>Select a service</option><option>Builder's Cleaning</option><option>End of Tenancy &amp; Pre/Post Sale</option><option>Renovation Cleaning</option><option>Turnover Cleaning</option><option>Welfare Cleaning</option><option>Office Cleaning</option><option>One-off Deep Cleans</option></select></label>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <button class="button button-dark" type="submit">Send enquiry <span aria-hidden="true">›</span></button>
+      </form>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .contact-page { min-height: 75vh; padding-top: 10rem; }
+  .contact-hero { padding: 5rem max(1.5rem, calc((100% - var(--max-width)) / 2)); color: white; background: linear-gradient(90deg, rgb(20 21 20 / 78%), rgb(20 21 20 / 24%)), url('/hero-living-room.jpg') center 53% / cover; }
+  .contact-hero .eyebrow { color: #e8caa5; }
+  .contact-hero h1 { margin: 0; font: 400 clamp(3rem, 7vw, 5.5rem)/1 var(--font-display); }
+  .contact-hero h1 em, .contact-details h2 em { color: var(--color-accent); font-weight: 400; }
+  .contact-body { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; width: min(var(--max-width), calc(100% - 3rem)); margin: auto; padding-block: 6rem; }
+  .contact-details > p:not(.eyebrow, .social-label) { max-width: 25rem; margin-bottom: 2rem; color: var(--color-muted); }
+  .contact-details > a { display: block; width: fit-content; margin-top: .65rem; font-weight: 600; }
+  .contact-details .social-label { margin: 2rem 0 .4rem; color: var(--color-muted); font-size: .75rem; font-weight: 700; text-transform: uppercase; }
+  .contact-details .social-label ~ a { font-size: .85rem; }
+  .contact-body .consult-form { display: grid; align-content: start; gap: 1.25rem; }
+  .contact-body .consult-form label { display: grid; gap: .35rem; font-size: .78rem; font-weight: 600; }
+  .contact-body .consult-form input, .contact-body .consult-form select, .contact-body .consult-form textarea { width: 100%; padding: .7rem 0; border: 0; border-bottom: 1px solid #c9c6bd; border-radius: 0; background: transparent; color: var(--color-ink); font: 400 .95rem var(--font-body); }
+  .contact-body .consult-form textarea { resize: vertical; }
+  .contact-body .consult-form input:focus, .contact-body .consult-form select:focus, .contact-body .consult-form textarea:focus { outline: 0; border-color: var(--color-accent); }
+  .button { display: inline-flex; min-height: 3.75rem; align-items: center; justify-content: space-between; gap: 2rem; padding: 0 1.5rem; border: 0; background: var(--color-ink); color: white; font: 700 .75rem var(--font-body); text-transform: uppercase; cursor: pointer; }
+  .button:hover { background: var(--color-accent); color: var(--color-ink); }
+  @media (max-width: 700px) { .contact-page { padding-top: 11rem; } .contact-body { grid-template-columns: 1fr; gap: 3rem; padding-block: 4rem; } .contact-hero { padding-block: 4rem; } }
+</style>

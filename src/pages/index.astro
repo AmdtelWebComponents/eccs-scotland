@@ -1,16 +1,54 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const clients = ["Bellway", "Springfield", "Allanwater Homes", "Pacitti Jones", "SSR", "Harper Stone", "Halliday Homes", "Howdens", "Lochay Homes"];
 ---
 
-<BaseLayout title="ECCS Scotland">
-  <main>
-    <h1>ECCS Scotland</h1>
-    <p>Site re-implementation in progress.</p>
-    <eccs-counter></eccs-counter>
+<BaseLayout title="Elite Commercial Cleaning Services | ECCS Scotland">
+  <main class="home-page">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A cleaner finish. Every time.</p>
+        <h1 id="hero-title">Elite Commercial<br />Cleaning Services</h1>
+        <p class="hero-subtitle">Tailored cleaning packages</p>
+        <a class="button button-outline" href="/contact/">Get a consultation <span aria-hidden="true">›</span></a>
+      </div>
+      <a class="hero-scroll" href="/about/">Discover ECCS <span aria-hidden="true">↓</span></a>
+    </section>
+    <section class="clients" aria-label="Some of the clients we work with">
+      <div class="section-wrap clients-inner">
+        <p class="eyebrow">Trusted by great teams</p>
+        <div class="client-list">
+          {clients.map((client) => <span>{client}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="home-next section-wrap">
+      <p class="eyebrow">Ready to get started?</p>
+      <h2>Let’s find the right<br /><em>cleaning package.</em></h2>
+      <a class="button button-dark" href="/contact/">Talk to our team <span aria-hidden="true">›</span></a>
+    </section>
   </main>
 </BaseLayout>
 
-<script>
-  // Loaded only on pages that use the component.
-  import "../components/eccs-counter";
-</script>
+<style>
+  .hero { position: relative; display: flex; min-height: min(760px, 100svh); align-items: center; padding: 12rem clamp(1.5rem, 8vw, 8rem) 6rem; color: white; background: linear-gradient(90deg, rgb(20 21 20 / 78%), rgb(20 21 20 / 24%)), linear-gradient(0deg, rgb(20 21 20 / 15%), rgb(20 21 20 / 15%)), url('/hero-living-room.jpg') center 53% / cover; }
+  .hero-copy { max-width: 1000px; }
+  .eyebrow { margin: 0 0 1.2rem; color: var(--color-accent); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .hero .eyebrow { color: #e8caa5; }
+  .hero h1 { margin: 0; font: 400 clamp(3.4rem, 7vw, 6rem)/.98 var(--font-display); }
+  .hero-subtitle { margin: 1.5rem 0 2.5rem; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 600; }
+  .button { display: inline-flex; min-height: 3.75rem; align-items: center; justify-content: space-between; gap: 2rem; padding: 0 1.5rem; border: 1px solid transparent; font: 700 .75rem var(--font-body); text-transform: uppercase; cursor: pointer; }
+  .button-outline { min-width: 15rem; border-color: #e8caa5; color: white; }
+  .button-outline:hover { background: #e8caa5; color: var(--color-ink); }
+  .hero-scroll { position: absolute; right: clamp(1.5rem, 8vw, 8rem); bottom: 2rem; display: flex; gap: 1rem; align-items: center; font-size: .75rem; text-transform: uppercase; }
+  .clients { padding-block: 3rem; border-block: 1px solid #e6e3db; }
+  .clients-inner > .eyebrow { text-align: center; }
+  .client-list { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; color: #77776f; font: 400 1.1rem var(--font-display); }
+  .home-next { padding-block: 6rem; text-align: center; }
+  .home-next .button { margin-top: 1rem; }
+  .button-dark { background: var(--color-ink); color: white; }
+  .button-dark:hover { background: var(--color-accent); color: var(--color-ink); }
+  @media (max-width: 560px) { .hero { min-height: 680px; padding: 12rem 1.5rem 5rem; background-position: 58% center; } .hero h1 { font-size: clamp(3.2rem, 14vw, 4.5rem); } .hero-scroll { right: 1.5rem; } .client-list { justify-content: center; gap: 1rem 1.5rem; } }
+</style>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const services = [
+  { title: "Builder's Cleaning", copy: "Working with the construction industry, we offer tailored cleaning packages for new-build homes. Our specialist team's attention to detail ensures a sparkling home for handover, with the flexibility, reliability and high standards your site needs.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/Builders.png" },
+  { title: "End of Tenancy & Pre/Post Sale", copy: "As a landlord or estate agent, property cleanliness is a high priority. We get every space ready for the next tenant or owner without delay, working closely with award-winning local estate agents.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/Turnover.png" },
+  { title: "Renovation Cleaning", copy: "We provide cleaning packages for all types of renovation, whether that is a single room or a full home, office block or nightclub.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/Renovation.png" },
+  { title: "Turnover Cleaning", copy: "Got a holiday rental? We take care of turnover days with fresh bedding, clean bathrooms and a sparkling kitchen, along with any special touches you need, including welcome packs.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/SPONGE-copy.png" },
+  { title: "Welfare Cleaning", copy: "We work in harmony with local councils and organisations to support people who may have difficulty keeping their homes clean.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/Welfare.png" },
+  { title: "Office Cleaning", copy: "Reliable workplace cleaning to keep your team’s environment fresh, comfortable and ready for the working day.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/Office.png" },
+  { title: "One-off Deep Cleans", copy: "A thorough, careful deep clean for when your home or business needs a fresh start. Tell us about your space and we can tailor the clean to your requirements.", image: "https://eccs-scotland.co.uk/wp-content/uploads/2022/03/Deep-clean.png" },
+];
+---
+
+<BaseLayout title="Cleaning Services | ECCS Scotland" description="Explore builder, tenancy, renovation, turnover, welfare, office and deep cleaning services from ECCS Scotland.">
+  <main class="services-page page-content">
+    <header class="page-hero">
+      <p class="eyebrow">Tailored cleaning packages</p>
+      <h1>Cleaning that fits<br /><em>your world.</em></h1>
+      <p>Every space is different. Our experienced team delivers reliable, considered cleaning shaped around your property, schedule and standards.</p>
+    </header>
+    <section class="service-list section-wrap" aria-label="Our cleaning services">
+      {services.map((service, index) => (
+        <article class="service-item">
+          <div class="service-image"><img src={service.image} alt="" loading="lazy" /></div>
+          <div class="service-copy"><p class="service-number">0{index + 1} / 07</p><h2>{service.title}</h2><p>{service.copy}</p><a class="text-link" href="/contact/">Ask about this service <span aria-hidden="true">↗</span></a></div>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-content { padding-top: 9.5rem; }
+  .page-hero { padding: 5rem max(1.5rem, calc((100% - var(--max-width)) / 2)); background: #e9e5dc; }
+  .page-hero h1 { margin: 0; font: 400 clamp(3rem, 6vw, 5rem)/1.05 var(--font-display); }
+  .page-hero h1 em { color: var(--color-accent); font-weight: 400; }
+  .page-hero > p:last-child { max-width: 34rem; margin-bottom: 0; color: var(--color-muted); }
+  .section-wrap { width: min(var(--max-width), calc(100% - 3rem)); margin-inline: auto; }
+  .service-list { padding-block: 5rem; }
+  .service-item { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; padding-block: 2rem; border-bottom: 1px solid #e2dfd7; }
+  .service-item:nth-child(even) .service-image { order: 2; }
+  .service-image { overflow: hidden; background: #e5e2da; }
+  .service-image img { width: 100%; aspect-ratio: 1.55; object-fit: cover; transition: transform 450ms ease; }
+  .service-item:hover .service-image img { transform: scale(1.035); }
+  .service-number { color: var(--color-accent); font-size: .72rem; font-weight: 700; }
+  .service-copy h2 { margin: .7rem 0 1rem; font: 400 clamp(1.9rem, 3vw, 2.8rem)/1.1 var(--font-display); }
+  .service-copy > p:not(.service-number) { max-width: 33rem; color: var(--color-muted); }
+  .text-link { display: inline-flex; gap: 1rem; align-items: center; margin-top: 1rem; padding-bottom: .35rem; border-bottom: 1px solid var(--color-accent); font-size: .82rem; font-weight: 700; }
+  @media (max-width: 620px) { .page-content { padding-top: 11rem; } .service-list { padding-block: 2rem; } .service-item, .service-item:nth-child(even) { grid-template-columns: 1fr; gap: 1rem; padding-block: 1.5rem; } .service-item:nth-child(even) .service-image { order: 0; } }
+</style>
