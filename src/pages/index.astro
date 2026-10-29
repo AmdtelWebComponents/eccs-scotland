@@ -7,6 +7,10 @@ const clients = ["Bellway", "Springfield", "Allanwater Homes", "Pacitti Jones", 
 <BaseLayout title="Elite Commercial Cleaning Services | ECCS Scotland">
   <main class="home-page">
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-slideshow" aria-hidden="true">
+        <img class="hero-slide hero-slide-first" src="/hero-living-room.jpg" alt="" fetchpriority="high" />
+        <img class="hero-slide hero-slide-second" src="/hero-kitchen.jpg" alt="" />
+      </div>
       <div class="hero-copy">
         <p class="eyebrow">A cleaner finish. Every time.</p>
         <h1 id="hero-title">Elite Commercial<br />Cleaning Services</h1>
@@ -33,7 +37,14 @@ const clients = ["Bellway", "Springfield", "Allanwater Homes", "Pacitti Jones", 
 </BaseLayout>
 
 <style>
-  .hero { position: relative; display: flex; min-height: min(760px, 100svh); align-items: center; padding: 12rem clamp(1.5rem, 8vw, 8rem) 6rem; color: white; background: linear-gradient(90deg, rgb(20 21 20 / 78%), rgb(20 21 20 / 24%)), linear-gradient(0deg, rgb(20 21 20 / 15%), rgb(20 21 20 / 15%)), url('/hero-living-room.jpg') center 53% / cover; }
+  .hero { position: relative; isolation: isolate; display: flex; min-height: min(760px, 100svh); align-items: center; overflow: hidden; padding: 12rem clamp(1.5rem, 8vw, 8rem) 6rem; color: white; background: #282926; }
+  .hero-slideshow, .hero-slideshow::after, .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-slideshow { z-index: -1; }
+  .hero-slideshow::after { content: ""; background: linear-gradient(90deg, rgb(20 21 20 / 78%), rgb(20 21 20 / 24%)), linear-gradient(0deg, rgb(20 21 20 / 15%), rgb(20 21 20 / 15%)); }
+  .hero-slide { object-fit: cover; object-position: center 53%; opacity: 0; animation: hero-crossfade 12s ease-in-out infinite; }
+  .hero-slide-first { opacity: 1; animation-delay: -0.6s; }
+  .hero-slide-second { animation-delay: 5.4s; }
+  @keyframes hero-crossfade { 0%, 50%, 100% { opacity: 0; } 5%, 45% { opacity: 1; } }
   .hero-copy { max-width: 1000px; }
   .eyebrow { margin: 0 0 1.2rem; color: var(--color-accent); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
   .hero .eyebrow { color: #e8caa5; }
@@ -50,5 +61,6 @@ const clients = ["Bellway", "Springfield", "Allanwater Homes", "Pacitti Jones", 
   .home-next .button { margin-top: 1rem; }
   .button-dark { background: var(--color-ink); color: white; }
   .button-dark:hover { background: var(--color-accent); color: var(--color-ink); }
-  @media (max-width: 560px) { .hero { min-height: 680px; padding: 12rem 1.5rem 5rem; background-position: 58% center; } .hero h1 { font-size: clamp(3.2rem, 14vw, 4.5rem); } .hero-scroll { right: 1.5rem; } .client-list { justify-content: center; gap: 1rem 1.5rem; } }
+  @media (max-width: 560px) { .hero { min-height: 680px; padding: 12rem 1.5rem 5rem; } .hero-slide { object-position: 58% center; } .hero h1 { font-size: clamp(3.2rem, 14vw, 4.5rem); } .hero-scroll { right: 1.5rem; } .client-list { justify-content: center; gap: 1rem 1.5rem; } }
+  @media (prefers-reduced-motion: reduce) { .hero-slide { animation: none; } .hero-slide-first { opacity: 1; } .hero-slide-second { opacity: 0; } }
 </style>
