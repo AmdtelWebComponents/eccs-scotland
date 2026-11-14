@@ -29,8 +29,7 @@ const {
   <body data-page={currentPath}>
     <header class="site-header">
       <a class="brand" href="/" aria-label={`${site.name} home`}>
-        <span class="brand-name">{site.name}</span>
-        <span class="brand-tagline">{site.tagline}</span>
+        <img class="brand-logo" src="/eccs-logo.png" alt={site.name} />
       </a>
       <div class="contact-quick">
         {site.phone ? <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a> : <span>Your phone number</span>}
