@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
+import { site } from "../site.config";
 
 interface Props {
   title: string;
@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title,
-  description = "Elite Commercial Cleaning Services Scotland",
+  description = site.description,
   currentPath = Astro.url.pathname,
 } = Astro.props;
 ---
@@ -25,17 +25,16 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
-    <ClientRouter />
   </head>
   <body data-page={currentPath}>
     <header class="site-header">
-      <a class="brand" href="/" aria-label="ECCS Scotland home">
-        <img src="/eccs-logo.png" alt="Elite Commercial Cleaning Services Scotland Ltd" />
+      <a class="brand" href="/" aria-label={`${site.name} home`}>
+        <img class="brand-logo" src="/eccs-logo.png" alt={site.name} />
       </a>
-      <a class="contact-quick" href="tel:07581398620">
-        <span>07581 398 620</span>
-        <small>info@ecleaningservices.co.uk</small>
-      </a>
+      <div class="contact-quick">
+        {site.phone ? <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a> : <span>Your phone number</span>}
+        {site.email ? <small><a href={`mailto:${site.email}`}>{site.email}</a></small> : <small>your@email.com</small>}
+      </div>
       <nav class="site-nav" aria-label="Main navigation">
         <a href="/" class:list={{ active: currentPath === "/" }}>Home</a>
         <a href="/about/" class:list={{ active: currentPath === "/about/" }}>About</a>
@@ -46,9 +45,9 @@ const {
     </header>
     <slot />
     <footer class="site-footer">
-      <a href="/">Elite Commercial Cleaning Services</a>
-      <span>Serving Scotland with care and attention to detail.</span>
-      <a href="tel:07581398620">07581 398 620</a>
+      <a href="/">{site.name}</a>
+      <span>{site.area}</span>
+      {site.phone && <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>}
     </footer>
   </body>
 </html>
